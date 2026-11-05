@@ -1,0 +1,292 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+/* CSS RESET */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* IMPORT ADOBE FONTS */
+@import url("https://use.typekit.net/kwh1jkr.css");
+
+:root {
+    /* Colors */
+    --beige: #cc9966;
+    --brown: #cc6600;
+    --peach: #ffcc99;
+    --teal: #006666;
+    --white: #ffffff;
+
+    /* Fonts */
+    --header: "coiny", sans-serif;
+    --paragraph: "dm-sans", sans-serif;
+}
+
+/* GLOBAL STYLES */
+h1 {
+    font-family: var(--header);
+    font-size: 3rem;
+    color: var(--teal);
+}
+
+h2 {
+    font-family: var(--header);
+    font-size: 2.5rem;
+    color: var(--brown);
+}
+
+p {
+    font-family: var(--paragraph);
+}
+
+/* HEADER */
+header {
+    position: fixed;
+    width: 100%;
+    margin-top: -1.5rem;
+}
+
+nav {
+    margin-top: -15rem
+}
+
+#header_logo {
+    height: 7rem;
+    margin: 2rem 0 0 3rem;
+    background-color: var(--white);
+    border: solid 5px var(--brown);
+    border-radius: 15px;
+    transition: transform 0.5s ease;
+}
+
+#header_logo:hover {
+    transform: rotate(-5deg) scale(1.1);
+    cursor: pointer;
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-end;
+    font-family: var(--header);
+    font-size: 1.75rem;
+    margin-top: -4.5rem;
+}
+
+nav ul li a {
+    color: var(--brown);
+    text-decoration: none;
+    padding: 0.75rem;
+    margin-right: 3rem;
+    background-color: var(--white);
+    border: solid 5px var(--brown);
+    border-radius: 10px;
+    transition: transform 1s ease;
+}
+
+nav ul li:hover {
+    transform: scale(1.1);
+}
+
+/* HERO SECTION */
+#hero {
+    min-height: 75rem;
+    background-image:
+        linear-gradient(to bottom, transparent 60%, #ffffff 100%),
+        url(assets/fresh_out_of_the_oven.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#hero div {
+    float: right;
+    width: 50rem;
+    margin: 30rem 8rem 0 0;
+    padding: 5rem;
+    background-color: var(--white);
+    border: solid 10px var(--teal);
+    border-radius: 30px;
+    box-shadow:
+        1px 1px 0px var(--teal),
+        2px 2px 0px var(--teal),
+        3px 3px 0px var(--teal),
+        4px 4px 0px var(--teal),
+        5px 5px 0px var(--teal),
+        6px 6px 0px var(--teal),
+        7px 7px 0px var(--teal),
+        8px 8px 0px var(--teal),
+        9px 9px 0px var(--teal),
+        10px 10px 0px var(--teal);
+}
+
+h1 {
+    margin-bottom: 1rem;
+}
+
+#hero div p {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+/* CONTACT FORM */
+form {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.5rem;
+    width: 30rem;
+    margin: 0 5rem 0 50rem;
+}
+
+label, fieldset {
+    font-family: var(--paragraph);
+}
+
+input, textarea {
+    padding: 1rem;
+}
+
+.required {
+    color: red;
+}
+
+input[type="radio"] {
+    accent-color: var(--brown);
+}
+
+#submit {
+    font-family: var(--header);
+    font-size: 1.5rem;
+    color: var(--brown);
+    background: var(--white);
+    border: solid 5px var(--brown);
+    border-radius: 5px;
+    padding: 0.5rem;
+}

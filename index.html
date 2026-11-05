@@ -18,14 +18,16 @@
     <title>Brianna's Bread</title>
 
     <!-- ADD FAVICON ------------------------------------------------->
-    <link rel="icon" type="image/x-icon" href="assets/Briannas_Bread_Logo.png">
+    <link rel="icon" type="image/x-icon" href="assets/BB_Logomark.svg">
 </head>
 
 <body>
     <!-- NAVIGATION ------------------------------------------------->
     <header>
-        <img src="assets/Briannas_Bread_Logo.png" alt="">
+        <img src="assets/Awning.svg" alt="">
         <nav>
+            <a href="index.html"><img src="assets/BB_Primary_Logo.svg" alt="Brianna's Bread primary logo"
+                    id="header_logo"></a>
             <ul>
                 <li>
                     <a href="#about">About</a>
@@ -36,21 +38,18 @@
                 <li>
                     <a href="#contact">Contact</a>
                 </li>
-                <li class="button">
-                    <a href="">Order</a>
-                </li>
             </ul>
         </nav>
     </header>
-    
+
     <!-- MAIN CONTENT ------------------------------------------------->
     <main>
         <!-- HERO SECTION ------------------------------------------------->
         <section id="hero">
-            <img src="assets/fresh_out_of_the_oven.jpg" alt="">
             <div>
                 <h1>Better Bread for Your Family</h1>
-                <p>We bake bread with only the best ingredients - organic, fair trade certified, no GMOs or artifical anything! Feel confident about what you're feeding your family.</p>
+                <p>We bake bread with only the best ingredients - organic, fair trade certified, no GMOs or artificial
+                    anything! Feel confident about what you're feeding your family.</p>
             </div>
         </section>
 
@@ -65,21 +64,46 @@
         <section id="products">
             <h2>Products</h2>
             <!-- Use JS to dynamically pull data from a spreadsheet and populate data on website. -->
-             <a href="">Order</a>
+            <a href="">Order</a>
         </section>
-        
+
         <!-- CONTACT SECTION ------------------------------------------------->
         <section id="contact">
             <h2>Contact</h2>
 
-            <!-- CONTACT FORM ------------------------------------------------->
+            <!-- CONTACT FORM -->
             <form action="" method="post">
-                <label for="name">Name</label>
+
+                <!-- NAME INPUT -->
+                <label for="name">Name<span class="required">*</span></label>
                 <input type="text" name="name" id="name" required>
+
+                <!-- PHONE INPUT -->
+                <label for="phone">Phone</label>
+                <input type="phone" name="phone" id="phone">
+
+                <!-- EMAIL INPUT -->
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" required>
-                <label for="message">Message</label>
+                <input type="email" name="email" id="email">
+
+                <!-- PREFERRED CONTACT METHOD (RADIO BUTTONS) -->
+                <fieldset>
+                    <legend>Preferred Contact Method<span class="required">*</span></legend>
+                    <span class="radio_input">
+                        <input type="radio" name="phone" id="phone_radio" value="Phone" checked>
+                        <span class="radio_label">Phone</span>
+                    </span>
+                    <span class="radio_input">
+                        <input type="radio" name="email" id="email_radio" value="Email">
+                        <span class="radio_label">Email</span>
+                    </span>
+                </fieldset>
+
+                <!-- MESSAGE -->
+                <label for="message">Message<span class="required">*</span></label>
                 <textarea name="message" id="message" required></textarea>
+
+                <!-- SUBMIT BUTTON -->
                 <input type="submit" name="submit" id="submit">
             </form>
         </section>
