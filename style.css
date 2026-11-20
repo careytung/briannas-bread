@@ -186,14 +186,18 @@
 
     h3 {
         font-family: var(--header);
-        font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+        font-family: var(--paragraph);
+        font-weight: bold;
+        font-size: clamp(1.25rem, 2.4vw, 2rem);
         font-weight: 700;
         color: var(--brown);
     }
 
     h4 {
         font-family: var(--header);
-        font-size: clamp(1.25rem, 2.4vw, 2rem);
+        font-family: var(--paragraph);
+        font-weight: bold;
+        font-size: clamp(1rem, 2.2vw, 1.5rem);
         font-weight: 700;
         color: var(--brown);
     }
@@ -516,6 +520,7 @@
 
     .description {
         text-align: justify;
+        margin-bottom: 2rem;
     }
 
     .ingredients {
@@ -532,6 +537,8 @@
     #products ul li {
         grid-column: span 2;
         background: var(--white);
+        font-family: var(--paragraph);
+        font-weight: bold;
         text-align: center;
         padding: 1rem;
         border: solid 3px var(--brown);
