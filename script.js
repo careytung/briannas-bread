@@ -227,7 +227,7 @@ let email = document.getElementById("email");
 let phoneCheck = document.getElementById("phone_radio");
 let emailCheck = document.getElementById("email_radio");
 let message = document.getElementById("message");
-let formSubmit = document.getElementById("submit");
+let formSubmit = document.getElementById("submitBtn");
 
 let nameErr = document.querySelector("p.name");
 let phoneErr = document.querySelector("p.phone");
@@ -237,6 +237,8 @@ let messageErr = document.querySelector("p.message");
 // Validates the form and throws errors when needed
 function contactValidate(event) {
     event.preventDefault();
+
+    let isValid = true;
 
     // Resets input border styles
     name.classList.remove("error");
@@ -252,26 +254,45 @@ function contactValidate(event) {
 
     // Checks if name is entered
     if (name.value.trim() == "") {
+        isValid = false;
         nameErr.classList.remove("hidden");
         name.classList.add("error");
     }
 
     // Checks if proper phone format is entered where required
     if (phoneCheck.checked && !phoneRegex.test(phone.value.trim())) {
+        isValid = false;
         phoneErr.classList.remove("hidden");
         phone.classList.add("error");
     }
 
     // Checks if proper email format is entered where required
     if (emailCheck.checked && !emailRegex.test(email.value.trim())) {
+        isValid = false;
         emailErr.classList.remove("hidden");
         email.classList.add("error");
     }
 
     // Checks if message is entered
     if (message.value.trim() == "") {
+        isValid = false;
         messageErr.classList.remove("hidden");
         message.classList.add("error");
+    }
+
+    if(isValid) {
+        // Submits form
+        document.querySelector("#contact form").submit();
+
+        // Displays submission message
+        document.querySelector("#submissionMsg").classList.remove("hidden");
+
+        // Resets form values
+        name.value = "";
+        phone.value = "";
+        email.value = "";
+        phoneCheck.checked = true;
+        message.value = "";
     }
 }
 
