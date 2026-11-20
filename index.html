@@ -13,7 +13,7 @@
 
     <!-- LINK CSS AND JS FILES ------------------------------------------------->
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 
     <title>Brianna's Bread</title>
 
@@ -24,10 +24,12 @@
 <body>
     <!-- NAVIGATION ------------------------------------------------->
     <header>
-        <img src="assets/Awning.svg" alt="">
-        <nav>
-            <a href="index.html"><img src="assets/BB_Primary_Logo.svg" alt="Brianna's Bread primary logo"
-                    id="header_logo"></a>
+        <a href="index.html"><img src="assets/BB_Primary_Logo.svg" alt="Brianna's Bread primary logo" class="mobile-icon"></a>
+        <a href="index.html"><img src="assets/BB_Logomark.svg" alt="Brianna's Bread logomark" class="mobile-icon logomark"></a>
+        <button id="openBtn" class="mobile-icon" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+
+        <nav id="mobileNav" aria-hidden="true">
+            <button id="closeBtn" class="mobile-icon" aria-label="Close menu">&times;</button>
             <ul>
                 <li>
                     <a href="#about">About</a>
@@ -38,12 +40,31 @@
                 <li>
                     <a href="#contact">Contact</a>
                 </li>
+                <li>
+                    <img src="assets/Moon.svg" alt="Moon icon to toggle light and dark mode">
+                </li>
             </ul>
         </nav>
     </header>
 
     <!-- MAIN CONTENT ------------------------------------------------->
     <main>
+        <!-- FLOATING WIDGET & POPUP------------------------------------------------->
+        <img src="assets/Bread_Basket.gif" alt="Bread basket animation for coupon" class="floating-widget">
+        <div id="popupOverlay">
+            <div id="popup">
+                <button id="closePopup" aria-label="Close popup">&times;</button>
+                <h2>You've got a chance to win free bread!</h2>
+                <p>If you guess the number we're thinking of, you get a FREE loaf of bread! Try your luck by entering
+                    an integer between 1 and 9 inclusive.</p>
+                <form id="popupForm" novalidate>
+                    <label for="guess">Input your guess:</label>
+                    <input type="number" name="guess" id="guess">
+                    <input type="submit" name="enterGuess" id="enterGuess">
+                </form>
+            </div>
+        </div>
+
         <!-- HERO SECTION ------------------------------------------------->
         <section id="hero">
             <div>
@@ -51,20 +72,52 @@
                 <p>We bake bread with only the best ingredients - organic, fair trade certified, no GMOs or artificial
                     anything! Feel confident about what you're feeding your family.</p>
             </div>
+            <a href="#about" class="scroll-indicator">
+                <span>Scroll for more</span>
+                <span class="arrow">&darr;</span>
+            </a>
         </section>
 
         <!-- ABOUT SECTION ------------------------------------------------->
         <section id="about">
             <h2>About</h2>
-            <p>Lorem ipsum...</p>
-            <img src="" alt="">
+            <img src="assets/Brianna.png" alt="Brianna">
+            <div>
+                <h3>Hi, I'm Brianna! </h3>
+                <p>I have been baking and experimenting with bread for over a decade now with the goal of
+                    making the best bread you've ever tasted with the best ingredients available at the best price on
+                    the
+                    market. All our bread is baked fresh every morning! Catch us at local farmers markets or place an
+                    online
+                    order today.</p>
+            </div>
         </section>
 
         <!-- PRODUCT SECTION ------------------------------------------------->
         <section id="products">
-            <h2>Products</h2>
-            <!-- Use JS to dynamically pull data from a spreadsheet and populate data on website. -->
-            <a href="">Order</a>
+            <div class="products-container">
+                <h2>Products</h2>
+                <div id="display">
+                    <img src="assets/Sourdough_Loaf.png" alt="Sourdough bread">
+                    <h3>Sourdough Loaf</h3>
+                    <p class="price">$6.00</p>
+                    <h4>Description</h4>
+                    <p class="description">Keeping it simple! Made with just three ingredients, this organic sourdough
+                        loaf
+                        is our best-seller.
+                        Pair it with fresh butter or homemade preserves for a light breakfast or snack, or add a thick
+                        slice
+                        to bolster any soup.</p>
+                    <h4>Ingredients</h4>
+                    <p class="ingredients">Organic all-purpose flour, Water, Sea salt</p>
+                </div>
+
+                <!-- PRODUCT PICKER -->
+                <ul>
+                    <!-- Product buttons are populated with JavaScript -->
+                </ul>
+                <a href="">Order</a>
+            </div>
         </section>
 
         <!-- CONTACT SECTION ------------------------------------------------->
@@ -72,36 +125,45 @@
             <h2>Contact</h2>
 
             <!-- CONTACT FORM -->
-            <form action="" method="post">
+            <form action="" method="post" novalidate>
 
                 <!-- NAME INPUT -->
                 <label for="name">Name<span class="required">*</span></label>
                 <input type="text" name="name" id="name" required>
+                <!-- NAME INPUT ERROR -->
+                <p class="hidden error-msg name">Please enter your name</p>
 
                 <!-- PHONE INPUT -->
                 <label for="phone">Phone</label>
-                <input type="phone" name="phone" id="phone">
+                <input type="tel" name="phone" id="phone">
+                <!-- PHONE INPUT ERROR -->
+                <p class="hidden error-msg phone">Please enter a valid phone number following the format "123456789"</p>
 
                 <!-- EMAIL INPUT -->
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email">
+                <!-- EMAIL INPUT ERROR -->
+                <p class="hidden error-msg email">Please enter a valid email address following the format
+                    "username@something.com"</p>
 
                 <!-- PREFERRED CONTACT METHOD (RADIO BUTTONS) -->
                 <fieldset>
                     <legend>Preferred Contact Method<span class="required">*</span></legend>
                     <span class="radio_input">
-                        <input type="radio" name="phone" id="phone_radio" value="Phone" checked>
+                        <input type="radio" name="contactMethod" id="phone_radio" value="Phone" checked>
                         <span class="radio_label">Phone</span>
                     </span>
                     <span class="radio_input">
-                        <input type="radio" name="email" id="email_radio" value="Email">
+                        <input type="radio" name="contactMethod" id="email_radio" value="Email">
                         <span class="radio_label">Email</span>
                     </span>
                 </fieldset>
 
                 <!-- MESSAGE -->
                 <label for="message">Message<span class="required">*</span></label>
-                <textarea name="message" id="message" required></textarea>
+                <textarea name="message" id="message" rows="5" required></textarea>
+                <!-- MESSAGE INPUT ERROR -->
+                <p class="hidden error-msg message">Please enter a message</p>
 
                 <!-- SUBMIT BUTTON -->
                 <input type="submit" name="submit" id="submit">
